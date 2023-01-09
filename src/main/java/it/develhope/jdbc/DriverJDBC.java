@@ -40,6 +40,8 @@ public class DriverJDBC {
                 System.out.println(e.getMessage() + "\n"); //Table (view) 'german_students' already exists  (if table 'students' exists)
             }
 
+            //select students name, surname from views, add students to related lists
+
             ResultSet resultSet = statement.executeQuery("SELECT last_name, first_name FROM italian_students;");
 
             while (resultSet.next()) {
@@ -55,7 +57,6 @@ public class DriverJDBC {
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
-
         finally {
             try {
                 if(conn != null){
@@ -65,6 +66,8 @@ public class DriverJDBC {
                 System.out.println(ex.getMessage());
             }
         }
+
+        //print students lists with check if lists are not empty
 
         if(!italianStudents.isEmpty()){
             System.out.println("Print all students of italian_students view:\n");
